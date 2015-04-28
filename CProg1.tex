@@ -48,6 +48,71 @@
 \end{frame}
 
 \section{Introduction}
+\begin{frame}{What is the C Language?}
+  \begin{itemize}
+    \item A general-purpose, procedural, imperative computer programming language.
+    \item Developed in 1972 by Dennis M. Ritchie at the Bell Telephone Laboratories to develop the UNIX operating system.
+    \item The UNIX operating system, the C compiler, and essentially all UNIX applications programs have been written in C.
+    \item C is the most widely used computer language.
+    \begin{itemize}
+      \item Easy to learn
+      \item Structured language
+      \item Produces efficient programs
+      \item Handles low-level activities
+      \item Can be compiled on a variety of computer plaforms
+    \end{itemize}
+    \item Most of the state-of-the-art softwares have been implemented using C.
+    \item Today's most popular Linux OS and RBDMS MySQL have been written in C.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What do you need to learn C?}
+  \begin{enumerate}
+    \item {C Compiler}
+      \begin{itemize}
+        \item What is a Compiler?
+          \begin{itemize}
+            \item A compiler is a computer program (or set of programs) that transforms source code written in a programming language (the source language) into another computer language (the target language, often having a binary form known as object code).
+          \end{itemize}
+        \item How does a compiler do?
+          \begin{itemize}
+            \item Translate C source code into a binary executable
+          \end{itemize}
+        \item List of Common Compilers:
+          \begin{itemize}
+            \item GCC GNU Project (Free, available on most *NIX systems)
+            \item Intel Compiler
+            \item Portland Group (PGI) Compiler
+            \item Microsoft/Borland Compiler
+            \item IBM XL Compiler
+          \end{itemize}
+      \end{itemize}
+    \item {Text Editor}
+      \begin{itemize}
+        \item Emacs
+        \item VI/VIM
+        \item Notepad++ (avoid Notepad if you will eventually use a *NIX system)
+        \item Integrated Development Environment: Eclipse, Visual Studio, etc
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{My First C Code}
+  \begin{itemize}
+    \item Simple Hello World Code
+      \lstinputlisting[language=C]{./Exercise/hello.c}
+    \item Compile using GCC compiler or any other compiler that you prefer
+      \begin{lstlisting}[style=LINUX]
+dyn100077:Exercise apacheco$ gcc hello.c 
+      \end{lstlisting}
+    \item Run the compiled binary, a.out
+      \begin{lstlisting}[style=LINUX]
+dyn100077:Exercise apacheco$ ./a.out 
+Hello World!
+      \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
 \section{Basic Syntax}
 \section{Program Structure}
 \section{Data Types, Variables and Constants}
