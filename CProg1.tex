@@ -83,7 +83,7 @@
             \item GCC GNU Project (Free, available on most *NIX systems)
             \item Intel Compiler
             \item Portland Group (PGI) Compiler
-            \item Microsoft/Borland Compiler
+            \item Microsoft Visual Studio
             \item IBM XL Compiler
           \end{itemize}
       \end{itemize}
@@ -92,31 +92,65 @@
         \item Emacs
         \item VI/VIM
         \item Notepad++ (avoid Notepad if you will eventually use a *NIX system)
-        \item Integrated Development Environment: Eclipse, Visual Studio, etc
+        \item Integrated Development Environment: Eclipse, XCode, Visual Studio, etc
       \end{itemize}
   \end{enumerate}
 \end{frame}
 
-\begin{frame}[fragile]{My First C Code}
+\section{Program Structure}
+\begin{frame}[fragile]{Program Structure}
+A C Program consists of the following parts
   \begin{itemize}
-    \item Simple Hello World Code
-      \lstinputlisting[language=C]{./Exercise/hello.c}
-    \item Compile using GCC compiler or any other compiler that you prefer
-      \begin{lstlisting}[style=LINUX]
+    \item Preprocessor Commands
+    \item Functions
+    \item Variables
+    \item Statements \& Expressions
+    \item Comments
+  \end{itemize}
+  \begin{columns}
+    \column{0.5\textwidth}
+    A Simple Hello World Code
+    \lstinputlisting[language=C]{./Example/hello.c}
+    \column{0.5\textwidth}
+    Compile and execute the code
+    \begin{lstlisting}[style=LINUX]
 dyn100077:Exercise apacheco$ gcc hello.c 
-      \end{lstlisting}
-    \item Run the compiled binary, a.out
-      \begin{lstlisting}[style=LINUX]
 dyn100077:Exercise apacheco$ ./a.out 
 Hello World!
-      \end{lstlisting}
+    \end{lstlisting}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{My First C Code}
+  \lstinputlisting[language=C,numbers=left]{./Example/hello.c}
+  \begin{itemize}
+    \item \lstinline[language=C]|#include <stdio.h>| is a preprocessor command.
+    \item[] It tells a C compiler to include stdio.h file before going to actual compilation.
+    \item \lstinline[language=C]|int main()| is the main function where program execution begins.
+    \item \lstinline[language=C]|/* ... */| is a comment and ignored by the compiler.
+    \item \lstinline[language=C]|printf(...)| is function that prints \lstinline[language=C]|Hello World!| to the screen.
+    \item \lstinline[language=C]|return 0;| terminates main() function and returns the value 0.
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Title}
+
+\end{frame}
+
 \section{Basic Syntax}
-\section{Program Structure}
+\begin{frame}{Title}
+
+\end{frame}
+
 \section{Data Types, Variables and Constants}
+\begin{frame}{Title}
+
+\end{frame}
+
 \section{Control Structures: for, if \& switch}
+\begin{frame}{Title}
+
+\end{frame}
 
 \end{document}
 
