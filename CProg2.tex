@@ -1,0 +1,56 @@
+\documentclass[10pt,t]{beamer}
+
+\include{mypreamble}
+\beamertemplateballitem
+
+\hypersetup{
+  pdftitle={C Programming}
+  pdfauthor={Alexander B. Pacheco, LTS Research Computing, Lehigh University}
+}
+
+\title{C Programming II}
+
+
+\author[Alex Pacheco]{\large{Alexander~B.~Pacheco}}
+       
+\institute{\href{http://researchcomputing.lehigh.edu}{LTS Research Computing}}
+
+\date{\today}
+     
+\subject{Talks}
+\keywords{Lehigh Research Computing Resources, C Programming}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSection[]
+{
+  \begingroup
+  \setbeamertemplate{background canvas}[vertical shading][bottom=lubrown,top=lubrown]
+  \setbeamertemplate{footline}[myfootline] 
+  \setbeamertemplate{section page}[mysection]
+  \frame[c]{
+    \sectionpage
+  }
+  \endgroup
+}
+
+\titlegraphic{\includegraphics[scale=0.5]{lu}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Functions}
+\section{Arrays}
+\section{Pointers}
+\section{Input/Output}
+
+\end{document}
+
