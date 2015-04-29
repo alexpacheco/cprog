@@ -133,18 +133,174 @@ Hello World!
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Title}
-
-\end{frame}
-
 \section{Basic Syntax}
-\begin{frame}{Title}
-
+\begin{frame}[fragile,allowframebreaks]{Basic C Syntax}
+  \begin{itemize}
+    \item C is a case sensitive programming language i.e. program is not the same as Program or PROGRAM.
+    \item Each individual statement must end with a semicolon. 
+    \item Whitespace i.e. tabs or spaces is insignificant except whitespace within a character string.
+    \item All C statments are free format i.e. no specified layout or column assignment as in FORTRAN77.
+      \begin{lstlisting}
+#include <stdio.h>
+int main () {  /* My First C Code */  printf("Hello World!\n");  return 0;}
+      \end{lstlisting}
+    \item[] will produce the exact same result as the code on the previous slide.
+    \item In C everything within \lstinline|/* and */| is a comment. Comments can span multiple lines.
+      \begin{lstlisting}
+/* this is single line comment */
+/* This
+is a 
+multiline comment */
+      \end{lstlisting}
+      \item Always use proper comments in your code. Your code will most likely be handed to someone long after you are gone.
+      \item Comments are completely ignored by compiler (test/debug code)
+  \end{itemize}
 \end{frame}
 
 \section{Data Types, Variables and Constants}
-\begin{frame}{Title}
+\begin{frame}{Data Types}
+  \begin{description}
+    \item[Basic Types:] There are five basic data types
+      \begin{enumerate}
+        \item int - integer: a whole number.
+        \item float - floating point value: ie a number with a fractional part.
+        \item double - a double-precision floating point value.
+        \item char -  a single character.
+        \item void - valueless special purpose type.
+      \end{enumerate}
+    \item[Derived Types:] These include
+      \begin{enumerate}
+        \item Pointers
+        \item Arrays
+        \item Structures
+        \item Union
+        \item Function
+      \end{enumerate}
+  \end{description}
+  \begin{itemize}
+    \item The array and structure types are referred to collectively as the aggregate types. 
+    \item The type of a function specifies the type of the function's return value.
+  \end{itemize}
+\end{frame}
 
+\begin{frame}[fragile]{Basic Data Types: Integer}
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Type & Storage size (in bytes) & Value range \\
+      \hline
+      char            & 1      & -128 to 127 or 0 to 255 \\
+      unsigned char   & 1      & 0 to 255 \\
+      signed char     & 1      & -128 to 127 \\
+      \hline
+      \multirow{3}{*}{int} & 2 & -32,768 to 32,767 \\ & or & or \\ & 4 &  -2,147,483,648 to 2,147,483,647 \\
+      \hline
+      \multirow{3}{*}{unsigned int} & 2 & 0 to 65,535 \\ & or & or  \\ & 4 & 0 to 4,294,967,295 \\
+      \hline
+      short           & 2      & -32,768 to 32,767 \\
+      unsigned short  & 2      & 0 to 65,535 \\ 
+      \hline
+      long            & 4      & -2,147,483,648 to 2,147,483,647 \\
+      unsigned long   & 4      & 0 to 4,294,967,295 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item To get the exact size of a type or a variable on a particular platform, you can use the sizeof operator. 
+    \item The expressions \lstinline|sizeof(type)| yields the storage size of the object or type in bytes. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Basic Data Types: Floating-Point \& void}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      Type & Storage size & Value range & Precision (decimal places) \\
+      \hline
+      float       & 4 bytes  & 1.2E-38 to 3.4E38     & 6 \\
+      double      & 8 bytes  & 2.3E-308 to 1.7E308   & 15 \\
+      long double & 10 bytes & 3.4E-4932 to 1.1E4932 & 19 \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  \begin{center}
+    \begin{tabular}{|c|c|}
+      \hline
+      Situation & Description \\
+      \hline
+      function returns as void & function with no return value \\
+      function arguments as void & function with no parameter \\
+      pointers to void & address of an object without type \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Input and Output}
+  \begin{itemize}
+    \item C or any programming language in general needs to be interactive i.e. write something back and optionally read data to be useful.
+    \item Similar to Unix, C treats all devices as files.
+      \begin{center}
+        \begin{tabular}{ccc}
+          \hline
+          Standard File & File Pointer & Device \\
+          \hline
+          Standard Input & stdin & Keyboard \\
+          Standard Output & stdout & Screen \\
+          Standard Error & stderr & Screen\\
+          \hline
+        \end{tabular}
+      \end{center}
+      
+    \item C Programming language provides three functions to read/write from standard input/output
+      \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+          \hline
+          & \multicolumn{2}{c|}{Unformatted} & Formatted \\
+          \hline
+          Input & getchar & gets & scanf \\
+          Output & putchar & puts & printf \\
+          \hline
+        \end{tabular}
+      \end{center}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Unformatted I/O}
+  \begin{block}{The getchar() \& putchar() functions}
+    \begin{itemize}
+      \item The \lstinline|int getchar(void)| function reads the next available character from the screen and returns it as an integer. 
+      \item[] This function reads only single character at a time.
+      \item The \lstinline|int putchar(int c)| function puts the passed character on the screen and returns the same character. 
+      \item[] This function puts only single character at a time. 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{The gets() \& puts() functions}
+    \begin{itemize}
+      \item The \lstinline|char *gets(char *s)| function reads a line from stdin into the buffer pointed to by s until either a terminating newline or EOF.
+      \item The \lstinline|int puts(const char *s)| function writes the string s and a trailing newline to stdout.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{columns}
+    \column{0.5\textwidth}
+    \lstinputlisting[language=C]{./Example/readiounfmt1.c}
+    \column{0.5\textwidth}
+    \lstinputlisting[language=C]{./Example/readiounfmt2.c}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Formatted I/O}
+  \begin{itemize}
+    \item The \lstinline|int scanf(const char *format, ...)| function reads input from the standard input stream stdin and scans that input according to format provided.
+    \item The \lstinline|int printf(const char *format, ...)| function writes output to the standard output stream stdout and produces output according to a format provided (optional).
+      \lstinputlisting[language=C]{./Example/helloworld.c}
+    \item The format specifier 
+  \end{itemize}
 \end{frame}
 
 \section{Control Structures: for, if \& switch}
