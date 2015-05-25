@@ -314,6 +314,32 @@ multiline comment */
   \end{center}
 \end{frame}
 
+\begin{frame}{Common Format Specifier}
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Specifier & Output & Example\\
+      \hline
+      \%f & decimal float & 3.456 \\
+      \hline
+      \%7.5f & decimal float, 7 digit width and 5 digit precision & 3.45600 \\
+      \hline
+      \%d & integer & 5\\
+      \hline
+      \%05d & integer, 5 digits pad with zeros & 00101 \\
+      \hline
+      \%s & string of characters & "Hello World!"\\
+      \hline
+      \%e & scientific notation for decimal float & 2.71828e+5  \\
+      \hline
+      \textbackslash{}n & insert new line & \\
+      \hline
+      \textbackslash{}t & insert tab & \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
 \section{Control Structures: for, if \& switch}
 \begin{frame}{Title}
 
