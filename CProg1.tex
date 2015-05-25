@@ -299,8 +299,19 @@ multiline comment */
     \item The \lstinline|int scanf(const char *format, ...)| function reads input from the standard input stream stdin and scans that input according to format provided.
     \item The \lstinline|int printf(const char *format, ...)| function writes output to the standard output stream stdout and produces output according to a format provided (optional).
       \lstinputlisting[language=C]{./Example/helloworld.c}
-    \item The format specifier 
+    \item The format specifier: \lstinline|%[flags][width][.precision][length]specifier| 
   \end{itemize}
+  \begin{center}
+    \begin{tabular}{cl}
+      \hline
+      flag & meaning \\
+      \hline
+      - & left justify \\
+      + & always display sign\\
+      0 & pad with leading zeros\\
+      \hline
+    \end{tabular}
+  \end{center}
 \end{frame}
 
 \section{Control Structures: for, if \& switch}
