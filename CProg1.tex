@@ -237,6 +237,58 @@ multiline comment */
   \end{center}
 \end{frame}
 
+\begin{frame}{Constants \& Literals}
+  The constants refer to fixed values that the program may not alter during its execution. These fixed values are also called literals.
+  \begin{columns}
+  \column{0.5\textwidth}
+    \begin{block}{Integer Constants}
+    85         /* decimal */\\
+    0213       /* octal */\\
+    0x4b       /* hexadecimal */\\
+    30         /* int */\\
+    30u        /* unsigned int */\\
+    30l        /* long */\\
+    30ul       /* unsigned long */\\
+    \end{block}
+    \begin{block}{Character Constants}
+    'a' /* character 'a' */\\
+    'Z' /* character 'Z' */\\
+    \textbackslash? /*? character */\\
+    \textbackslash{}\textbackslash{} /*\ character */\\
+    \textbackslash{}n /*Newline */\\
+    \textbackslash{}r /*Carriage return */\\
+    \textbackslash{}t /*Horizontal tab */
+    \end{block}
+  \column{0.5\textwidth}
+    \begin{block}{Floating Point Constants}
+    3.1416\\
+    314159E-5 /* 3.14159 */\\
+    2.1E+5 /* 2.1x$10^5$*/\\
+    3.7E-2 /* 0.037 */\\
+    0.5E7 /* 5.0x$10^6$*/\\
+    -2.8E-2 /* -0.028 */
+    \end{block}
+    \begin{block}{String Constants}
+    /* normal string */\\
+    "hello, world"\\
+    /* multi-line string */\\
+    "c programming \textbackslash{}\\
+    language"
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{How to define Constants}
+  \begin{itemize}
+    \item Constants can be defined in two ways
+    \begin{enumerate}
+      \item Using the \lstinline{#define} preprocessor (defining a macro)
+      \item Using the \lstinline{const} keyword (new standard borrowed from C++)
+    \end{enumerate}
+  \end{itemize}
+  \lstinputlisting[language=C]{./Example/const.c}
+\end{frame}
+
 \begin{frame}{Input and Output}
   \begin{itemize}
     \item C or any programming language in general needs to be interactive i.e. write something back and optionally read data to be useful.
