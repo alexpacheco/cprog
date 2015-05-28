@@ -3,6 +3,10 @@
 \include{mypreamble}
 \beamertemplateballitem
 
+\newcolumntype{a}{>{\columncolor{lulime}}c}
+\newcolumntype{b}{>{\columncolor{lulime!60}}c}
+
+
 \hypersetup{
   pdftitle={C Programming}
   pdfauthor={Alexander B. Pacheco, LTS Research Computing, Lehigh University}
@@ -152,9 +156,50 @@ int main () {  /* My First C Code */  printf("Hello World!\n");  return 0;}
 is a 
 multiline comment */
       \end{lstlisting}
-      \item Always use proper comments in your code. Your code will most likely be handed to someone long after you are gone.
-      \item Comments are completely ignored by compiler (test/debug code)
+%      \item Always use proper comments in your code. Your code will most likely be handed to someone long after you are gone.
+%      \item Comments are completely ignored by compiler (test/debug code)
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Valid Character Set in C language}
+  \begin{itemize}
+    \item White space Characters: blank space, new line, horizontal tab, carriage return and form feed
+  \end{itemize}
+  \begin{center}
+    \begin{tabular}{|a|b|}
+      \hline
+      {Alphabets} & ABCDEFGHIJKLMNOPQRSTUVWXYZ \\
+      & abcdefghijklmnopqrstuvwxyz \\
+      Digits                     & 0123456789 \\
+      \hline
+    \end{tabular}
+    \newline
+    \begin{tabular}{abababababababa}
+      \hline
+      \multicolumn{15}{a}{Special Characters} \\
+      \hline
+      , & \_ & \{ & < & ' & ( & \Verb|^| & ; & \$ & / & *                & + & [ & \Verb|#| & ? \\ 
+      . & \& & \} & > & " & ) & \Verb|!| & : & \% & | & \textbackslash{} & - & ] & \Verb|~| & \\
+%      , & < & > & . & \_ & \( & \) & ; & : & \$ & \% & [ & ] & \# & ? \\
+%      '& \& & \{ & \} & " & \Verb|^| & ! & * & / & | & - & \textbackslash{} & \Verb|~| &  + & \\
+      \hline
+    \end{tabular}
+    \newline
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      \multicolumn{4}{a}{Reserved Keywords}\\
+      \hline
+      \rowcolor{lulime!60} auto     & double & int      & struct \\
+      \rowcolor{lulime}    break    & else   & long     & switch \\
+      \rowcolor{lulime!60} case     & enum   & register & typedef \\
+      \rowcolor{lulime}    char     & extern & return   & union \\
+      \rowcolor{lulime!60} continue & for    & signed   & void \\
+      \rowcolor{lulime}    do       & if     & static   & while \\
+      \rowcolor{lulime!60} default  & goto   & sizeof   & volatile \\
+      \rowcolor{lulime}    const    & float  & short    & unsigned \\
+      \hline
+    \end{tabular}
+  \end{center}
 \end{frame}
 
 \section{Data Types, Variables and Constants}
@@ -237,45 +282,97 @@ multiline comment */
   \end{center}
 \end{frame}
 
+\begin{frame}[fragile]{Variables}
+  \begin{itemize}
+    \item Variables are memory location in computer's memory to store data.
+    \item To indicate the memory location, each variable should be given a unique name called identifier. 
+    \item Variable names are just the symbolic representation of a memory location.
+    \item Rules for variable names:
+    \begin{enumerate}
+      \item Composed of letters (both uppercase and lowercase letters), digits and underscore '\_' only.
+      \item The first letter of a variable should be either a letter or an underscore.
+      \item There is no rule for the length of a variable name.
+      \begin{itemize}
+        \item Most likely your code will be used by someone else, so variable names should be meaningful and short as possible.
+      \end{itemize}
+    \end{enumerate}
+    \begin{lstlisting}
+int num;
+float circle_area;
+double _volume;
+    \end{lstlisting}
+    \item In C programming, you have to declare variable before using it in the program.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Declaring Variable or Variable Definition}
+  \begin{itemize}
+    \item A variable definition means to tell the compiler where and how much to create the storage for the variable. 
+    \item A variable definition specifies a data type and contains a list of one or more variables of that type as follows:
+    \item[] \lstinline{type variable_list;}
+    \item \lstinline{type} must be a valid C data type or any user-defined object, etc., and 
+    \item[] \lstinline{variable_list} may consist of one or more identifier names separated by commas.
+    \item Variables can be initialized (assigned an initial value) in their declaration.
+    \item[] \lstinline{type variable_name = value;}
+  \end{itemize}
+  \begin{lstlisting}
+int    i, j, k;
+char   c, ch;
+float  f, salary;
+double d;
+int d = 3, f = 5;           // definition and initializing d and f. 
+byte z = 22;                // definition and initializes z. 
+char x = 'x';               // the variable x has the value 'x'.
+  \end{lstlisting}
+\end{frame}
+
 \begin{frame}{Constants \& Literals}
   The constants refer to fixed values that the program may not alter during its execution. These fixed values are also called literals.
-  \begin{columns}
-  \column{0.5\textwidth}
-    \begin{block}{Integer Constants}
-    85         /* decimal */\\
-    0213       /* octal */\\
-    0x4b       /* hexadecimal */\\
-    30         /* int */\\
-    30u        /* unsigned int */\\
-    30l        /* long */\\
-    30ul       /* unsigned long */\\
-    \end{block}
-    \begin{block}{Character Constants}
-    'a' /* character 'a' */\\
-    'Z' /* character 'Z' */\\
-    \textbackslash? /*? character */\\
-    \textbackslash{}\textbackslash{} /*\ character */\\
-    \textbackslash{}n /*Newline */\\
-    \textbackslash{}r /*Carriage return */\\
-    \textbackslash{}t /*Horizontal tab */
-    \end{block}
-  \column{0.5\textwidth}
-    \begin{block}{Floating Point Constants}
-    3.1416\\
-    314159E-5 /* 3.14159 */\\
-    2.1E+5 /* 2.1x$10^5$*/\\
-    3.7E-2 /* 0.037 */\\
-    0.5E7 /* 5.0x$10^6$*/\\
-    -2.8E-2 /* -0.028 */
-    \end{block}
-    \begin{block}{String Constants}
-    /* normal string */\\
-    "hello, world"\\
-    /* multi-line string */\\
-    "c programming \textbackslash{}\\
-    language"
-    \end{block}
-  \end{columns}
+  {\footnotesize
+    \begin{columns}
+      \column{0.45\textwidth}
+      \begin{block}{Integer Constants}
+        \begin{tabular}{ll}
+          85         & /* decimal */\\
+          0213       & /* octal */\\
+          0x4b       & /* hexadecimal */\\
+          30         & /* int */\\
+          30u        & /* unsigned int */\\
+          30l        & /* long */\\
+          30ul       & /* unsigned long */\\
+        \end{tabular}
+      \end{block}
+      \begin{block}{Character Constants}
+        \begin{tabular}{ll}
+          'a'                               & /* character 'a' */\\
+          'Z'                               & /* character 'Z' */\\
+          \textbackslash?                   & /*? character */\\
+          \textbackslash{}\textbackslash{}  & /*\textbackslash{} character */\\
+          \textbackslash{}n                 & /*Newline */\\
+          \textbackslash{}r                 & /*Carriage return */\\
+          \textbackslash{}t                 & /*Horizontal tab */\\
+        \end{tabular}
+      \end{block}
+      \column{0.45\textwidth}
+      \begin{block}{Floating Point Constants}
+        \begin{tabular}{ll}
+          3.1416    & \\
+          314159E-5 & /* 3.14159 */\\
+          2.1E+5    & /* 2.1x$10^5$*/\\
+          3.7E-2    & /* 0.037 */\\
+          0.5E7     & /* 5.0x$10^6$*/\\
+          -2.8E-2   & /* -0.028 */\\
+        \end{tabular}
+      \end{block}
+        \begin{block}{String Constants}
+          \begin{tabular}{ll}
+            "hello, world"  & /* normal string */\\
+            "c programming \textbackslash{} & \multirow{2}{*}{/* multi-line string */}\\
+            language" & \\
+          \end{tabular}
+      \end{block}
+    \end{columns}
+  }
 \end{frame}
 
 \begin{frame}[fragile]{How to define Constants}
