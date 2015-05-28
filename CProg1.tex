@@ -384,12 +384,28 @@ multiline comment */
       \hline
       \%e & scientific notation for decimal float & 2.71828e+5  \\
       \hline
+      \%c & character &  \\
+      \hline
       \textbackslash{}n & insert new line & \\
       \hline
       \textbackslash{}t & insert tab & \\
       \hline
     \end{tabular}
   \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{}
+  \lstinputlisting[language=C]{./Example/print.c}
+
+  \begin{lstlisting}[language=C]
+alexanders-mbp:Example apacheco$ gcc -o print print.c
+alexanders-mbp:Example apacheco$ ./print
+Characters: a A 
+Decimals: 2014 0065
+         floats: 3.14160        3.141600        3.141600e+00 
+hello world 
+
+  \end{lstlisting}
 \end{frame}
 
 \section{Control Structures: for, if \& switch}
