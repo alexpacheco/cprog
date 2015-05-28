@@ -180,8 +180,6 @@ multiline comment */
       \hline
       , & \_ & \{ & < & ' & ( & \Verb|^| & ; & \$ & / & *                & + & [ & \Verb|#| & ? \\ 
       . & \& & \} & > & " & ) & \Verb|!| & : & \% & | & \textbackslash{} & - & ] & \Verb|~| & \\
-%      , & < & > & . & \_ & \( & \) & ; & : & \$ & \% & [ & ] & \# & ? \\
-%      '& \& & \{ & \} & " & \Verb|^| & ! & * & / & | & - & \textbackslash{} & \Verb|~| &  + & \\
       \hline
     \end{tabular}
     \newline
@@ -448,6 +446,14 @@ char x = 'x';               // the variable x has the value 'x'.
     \item The \lstinline|int scanf(const char *format, ...)| function reads input from the standard input stream stdin and scans that input according to format provided.
     \item The \lstinline|int printf(const char *format, ...)| function writes output to the standard output stream stdout and produces output according to a format provided (optional).
       \lstinputlisting[language=C]{./Example/helloworld.c}
+    \item In this program, the user is asked a input and value is stored in variable \lstinline|name|.
+    \item Note the '\lstinline|&|' sign before \lstinline|name|.
+    \item \lstinline|&name| denotes the address of \lstinline|name| and value is stored in that address.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Common Format Specifier}
+  \begin{itemize}
     \item The format specifier: \lstinline|%[flags][width][.precision][length]specifier| 
   \end{itemize}
   \begin{center}
@@ -461,9 +467,6 @@ char x = 'x';               // the variable x has the value 'x'.
       \hline
     \end{tabular}
   \end{center}
-\end{frame}
-
-\begin{frame}{Common Format Specifier}
   \begin{center}
     \begin{tabular}{|c|c|c|}
       \hline
@@ -503,6 +506,39 @@ Decimals: 2014 0065
 hello world 
 
   \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Programming Operators}
+  \begin{center}
+    \begin{tabular}{ab}
+      \hline
+      \multicolumn{2}{c}{Arithmetic Operators}\\
+      \hline
+      Operator & Meaning \\
+      \hline
+      +  & addition or unary plus \\
+      -  & subtraction or  unary minus \\
+      *  & multiplication \\
+      /  & division \\
+      \% & remainder after division( modulo division) \\
+      \hline
+    \end{tabular}
+    \newline
+    \begin{tabular}{abb}
+      \hline
+      \multicolumn{3}{c}{Other Arithmetic Operators} \\
+      \hline
+      Operator & Meaning & Same as \\
+      \hline
+      =   & a=b   & a=b \\
+      +=  & a+=b  & a=a+b \\
+      -=  & a-=b  & a=a-b \\
+      *=  & a*=b  & a=a*b \\
+      /=  & a/=b  & a=a/b \\
+      \%= & a\%=b & a=a\%b \\
+      \hline
+    \end{tabular}
+  \end{center}
 \end{frame}
 
 \section{Control Structures: for, if \& switch}
