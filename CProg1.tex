@@ -508,11 +508,10 @@ hello world
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Programming Operators}
+\section{Programming Operators}
+\begin{frame}{Arithmetic Operators}
   \begin{center}
     \begin{tabular}{ab}
-      \hline
-      \multicolumn{2}{c}{Arithmetic Operators}\\
       \hline
       Operator & Meaning \\
       \hline
@@ -540,6 +539,52 @@ hello world
     \end{tabular}
   \end{center}
 \end{frame}
+
+\begin{frame}{Relational Operators}
+  \begin{itemize}
+  \item Relational operators checks relationship between two operands.
+  \item If the relation is true, it returns value 1 and if the relation is false, it returns value 0.
+  \item Relational operators are used in decision making and loops in C programming.
+  \end{itemize}
+  \begin{center}
+    \begin{tabular}{abb}
+      \hline
+      Operator & Meaning & Example \\
+      \hline
+      =  & Equal to                 & 5==3 returns false (0) \\
+      >  & Greater than             & 5>3 returns true (1) \\
+      <  & Less than                & 5<3 returns false (0) \\
+      != & Not equal to             & 5!=3 returns true(1) \\
+      >= & Greater than or equal to & 5>=3 returns true (1) \\
+      <= & Less than or equal to    & 5<=3 return false (0) \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Logical \& Conditional Operators}
+  \begin{itemize}
+  \item Logical operators are used to combine expressions containing relation operators.
+  \item In C, there are 3 logical operators
+  \end{itemize}
+  \begin{center}
+    \begin{tabular}{abb}
+      \hline
+      Operator & Meaning & Example \\
+      \hline
+      \&\& & Logial AND  & If c=5 and d=2 then,((c==5) \&\& (d>5)) returns false. \\
+      ||   & Logical OR  & If c=5 and d=2 then, ((c==5) || (d>5)) returns true. \\
+      !    & Logical NOT & If c=5 then, !(c==5) returns false. \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \begin{itemize}
+  \item Conditional Operator: Conditional operators are used in decision making in C programming, i.e, executes different statements according to test condition whether it is either true or false.
+  \item[] \lstinline|conditional_expression?expression1:expression2|
+  \item If the test condition is true, expression1 is returned and if false expression2 is returned.
+  \end{itemize}
+\end{frame}
+
 
 \section{Control Structures: for, if \& switch}
 \begin{frame}{Title}
