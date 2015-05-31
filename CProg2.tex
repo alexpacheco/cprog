@@ -3,6 +3,9 @@
 \include{mypreamble}
 \beamertemplateballitem
 
+\newcolumntype{a}{>{\columncolor{lulime}}c}
+\newcolumntype{b}{>{\columncolor{lulime!60}}c}
+
 \hypersetup{
   pdftitle={C Programming}
   pdfauthor={Alexander B. Pacheco, LTS Research Computing, Lehigh University}
@@ -15,7 +18,7 @@
        
 \institute{\href{http://researchcomputing.lehigh.edu}{LTS Research Computing}}
 
-\date{\today}
+\date{June 3, 2015}
      
 \subject{Talks}
 \keywords{Lehigh Research Computing Resources, C Programming}
@@ -48,6 +51,78 @@
 \end{frame}
 
 \section{Functions}
+\begin{frame}[fragile]{Functions}
+  \begin{itemize}
+  \item A function is a group of statements that together perform a task.
+  \item Every C program has at least one function, which is main()
+  \item Functions receive either a fixed or variable amount of arguments.
+  \item Functions can only return one value, or return no value (void).
+  \item In C, arguments are \textbf{passed by value} to functions
+  \item How to return value? - \textbf{Pointers}
+  \item Functions are defined using the following syntax:
+    \begin{lstlisting}
+      return_type function_name( parameter list )
+      {
+        body of the function
+      }
+    \end{lstlisting}
+  \item A function \textbf{declaration} tells the compiler about a function's name, return type, and parameters.
+  \item A function \textbf{definition} provides the actual body of the function.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Function Definition}
+  \begin{itemize}
+  \item \textbf{Return Type:} Function's return type is the data type of the value the function returns. When there is no return value, return void.
+  \item \textbf{Function Name:} This is the actual name of the function.
+  \item \textbf{Parameter:} The parameter list refers to the type, order, and number of the parameters of a function. A function may contain no parameters.
+  \item \textbf{Function Body:} The function body contains a collection of statements that define the function behavior.
+  \end{itemize}
+  \lstinputlisting[language=C,firstline=20,lastline=32]{./Example/findmax.c}
+\end{frame}
+
+\begin{frame}{Example of using a Function}
+  \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/findmax.c}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Scope Rules: Local \& Global Variables}
+  \begin{itemize}
+  \item A scope is a region of the program where a defined variable can have its existence and beyond that variable can not be accessed.
+  \item \textbf{\color{lublue}Local Variables:} declared inside a function or block.
+  \item[] can be used only by statements that are inside that function or block of code.
+  \item[] Local variables are not known to functions outside their own.
+  \item \textbf{\color{lublue}Global Variables:}  defined outside of a function, usually on top of the program.
+  \item[] will hold their value throughout the lifetime of your program and,
+  \item[] they can be accessed inside any of the functions defined for the program.
+  \item A program can have same name for local and global variables but value of local variable inside a function will take preference.
+%  \item \textbf{\color{lublue}Formal Parameters:} Function parameters, formal parameters, are treated as local variables with-in that function and they will take preference over the global variables.
+  \end{itemize}
+  \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/scope.c}
+  \begin{lstlisting}[basicstyle=\fontsize{5}{6}\selectfont\ttfamily]
+    value of a in main() = 10
+    value of a in sum() = 10
+    value of b in sum() = 20
+    value of c in main() = 30
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Initializing Local \& Global Variables}
+  \begin{itemize}
+  \item Local Variables are not initialized by the system, the programmer must initialize it.
+  \item Global variables are automatically initialized by the system depending on the data type
+    
+    \begin{tabular}{ab}
+      \rowcolor{lublue}Data Type & Initial Default Value \\
+      int & 0 \\
+      char & '\textbackslash{}0' \\
+      float & 0 \\
+      double & 0 \\
+      pointer & NULL \\
+    \end{tabular}
+    \item \textit{It is a good programming practice to initialize variables properly otherwise, your program may produce unexpected results because uninitialized variables will take some garbage value already available at its memory location.}
+  \end{itemize}
+\end{frame}
+
 \section{Arrays}
 \section{Pointers}
 \section{Input/Output}
