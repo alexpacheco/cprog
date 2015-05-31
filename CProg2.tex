@@ -82,7 +82,7 @@
 \end{frame}
 
 \begin{frame}{Example of using a Function}
-  \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/findmax.c}
+  \lstinputlisting[language=C]{./Example/findmax.c}
 \end{frame}
 
 \begin{frame}[fragile,allowframebreaks]{Scope Rules: Local \& Global Variables}
@@ -97,8 +97,8 @@
   \item A program can have same name for local and global variables but value of local variable inside a function will take preference.
 %  \item \textbf{\color{lublue}Formal Parameters:} Function parameters, formal parameters, are treated as local variables with-in that function and they will take preference over the global variables.
   \end{itemize}
-  \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/scope.c}
-  \begin{lstlisting}[basicstyle=\fontsize{5}{6}\selectfont\ttfamily]
+  \lstinputlisting[language=C]{./Example/scope.c}
+  \begin{lstlisting}
     value of a in main() = 10
     value of a in sum() = 10
     value of b in sum() = 20
@@ -124,6 +124,148 @@
 \end{frame}
 
 \section{Arrays}
+\begin{frame}[fragile]{Arrays}
+  \begin{itemize}
+  \item Arrays are special variables which can hold more than one value using the same name with an index.
+  \item Declaring Arrays: \lstinline|type arrayName [ arraySize ];|
+    \begin{lstlisting}[language=C]
+      /* simply define the arrays */
+      double balance[10];
+      float atom[1000];
+      int index[5];
+    \end{lstlisting}
+  \item C array starts its index from 0
+
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      [0] & [1] & [2] & [3] & [4] \\
+      \hline
+      10 & 15 & 14 & 3 & 7 \\
+      \hline
+    \end{tabular}
+  \item[] index[2] (3rd element of the array) has a value 14
+  \item Initialize arrays with values
+    \begin{lstlisting}[language=C]
+      /* initialize the array with values*/
+      double atmass[4] = {12.0, 1.0, 1.0, 16.0};
+      double atmass[] = {12.0, 1.0, 1.0, 16.0};
+      atmass[0] = 12.0
+    \end{lstlisting}
+  \item Access array values via index
+    \begin{lstlisting}[language=C]
+      /* access the array values*/
+      int current_index = index[i];
+      double current_value=value[current_cell_index];
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Array Example}
+  \lstinputlisting[language=C]{./Example/array.c}
+\end{frame}
+
+\begin{frame}[fragile]{Accessing C arrays}
+  \begin{itemize}
+  \item C arrays are a sequence of elements with contiguous addresses.
+  \item There is no bounds checking in C.
+  \item Be careful when accessing your arrays
+  \item Compiler will not give you error, you will have *undefined* runtime behavior:
+  \end{itemize}
+  \begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+  
+  int index[5]={5, 4, 6, 3, 1};
+  
+  int a=3;
+  
+  /* undefined behavior */
+  
+  printf("%d\n",index[5]);
+  
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Multidimensional Arrays}
+  \begin{itemize}
+  \item General form of multidimensional array
+  \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|type name[size1][size2]...[sizeN];|
+  \item Declaring 2D and 3D arrays:
+    \begin{lstlisting}
+      float array2d[4][5];
+      double array3d[2][3][4];
+    \end{lstlisting}
+  \item Initializing multidimensional arrays
+    \begin{lstlisting}
+      int a[3][4] = {{/* 2D array is composed of 1D arrays*/
+        {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
+        {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
+        {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
+        };
+    \end{lstlisting}
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|}
+        \multicolumn{1}{c}{}& \multicolumn{1}{c}{\textbf{col0}} & \multicolumn{1}{c}{\textbf{col1}} & \multicolumn{1}{c}{\textbf{col2}} & \multicolumn{1}{c}{\textbf{col3}} \\
+        \cline{2-5}
+        \textbf{row0} & a[0][0]=0 & a[0][1]=1 & a[0][2]=2 & a[0][3]=3 \\
+        \cline{2-5}
+        \textbf{row1} & a[1][0]=4 & a[1][1]=5 & a[1][2]=6 & a[1][3]=7 \\
+        \cline{2-5}
+        \textbf{row2} & a[2][0]=8 & a[2][1]=9 & a[2][2]=10 & a[2][3]=11\\
+        \cline{2-5}
+      \end{tabular}
+    \end{center}
+  \item C arrays are \textbf{row major} order i.e. in memory, the C array appears as
+  \end{itemize}
+      {\scriptsize
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+          \hline
+          a[0][0] & a[0][1] & a[0][2] & a[0][3] & a[1][0] & a[1][1] & $\cdots$ & a[1][3] & a[2][0] & $\cdots$ & a[2][3]\\
+          \hline
+        \end{tabular}
+      }
+\end{frame}
+
+\begin{frame}[fragile]{Example: Arrays}
+  \lstinputlisting{./Example/minmaxsum.c}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Strings in C}
+  \begin{itemize}
+  \item Strings in C are a special type of array: array of characters terminated by a null character '\textbackslash{}0'.
+
+    \begin{lstlisting}
+      /* define string */
+      char str[7]={'H', 'E', 'L', 'L', 'O', '!', '\0'};
+      char str1="HELLO!";
+    \end{lstlisting}
+
+  \item Memory presentation of above defined string in C/C++:
+
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+      \hline
+      str[] & [0] & [1] & [2] & [3] & [4] & [5] & [6] \\
+      \cline{2-8}
+      & 'H' & 'E' & 'L' & 'L' & 'O' & '!' & '\textbackslash{}0' \\
+     \hline
+    \end{tabular}
+
+  \item C uses built-in functions to manipulate strings:
+    \begin{lstlisting}
+      /* C sample string functions */
+      strcpy(s1, s2); /* Copies string s2 into string s1.*/
+      strcat(s1, s2); /* Concatenates string s2 onto the end of string s1. */
+      strlen(s1); /* Returns the length of string s1. */
+      strcmp(s1, s2); /* Returns 0 if s1 and s2 are the same; less than 0 if
+      s1<s2; greater than 0 if s1>s2. */
+    \end{lstlisting}
+  \end{itemize}
+
+  \lstinputlisting[language=C]{./Example/strings.c}
+\end{frame}
+
 \section{Pointers}
 \section{Input/Output}
 
