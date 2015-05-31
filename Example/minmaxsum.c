@@ -24,7 +24,3 @@ int main () {
 
 }
 
-
-/* define  string */
-char str[7]={'H', 'E', 'L', 'L, 'O', '!', '\0'};
-char str1="HELLO!";
