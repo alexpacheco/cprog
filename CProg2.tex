@@ -267,6 +267,202 @@ int main() {
 \end{frame}
 
 \section{Pointers}
+\begin{frame}{Pointers}
+  \begin{itemize}
+  \item Pointers are a very important part of the C programming language.
+  \item They are used in many ways, such as:
+    \begin{itemize}
+    \item Array operations (e.g., while parsing strings)
+    \item Dynamic memory allocation
+    \item Sending function arguments by reference
+    \item Generic access to several similar variables
+    \item Malloc data structures of all kinds, especially trees and linked lists
+    \item Efficient, by-reference "copies" of arrays and structures, especially as function parameters
+    \end{itemize}
+  \item Necessary to understand memory and address $\cdots$ and the C programming language.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{What is a Pointer}
+  \begin{itemize}
+  \item A pointer is essentially a \textbf{\color{red}variable} whose value is the address of another variable.
+  \item Since it is a variable, it must be declared before use.
+  \item Pointer "points" to a specific part of the memory.
+  \item How to define pointers?
+    \begin{lstlisting}
+      /* type: pointer's base type
+      var-name: name of the pointer variable.
+      asterisk *:designate a variable as a pointer */
+      type *pointer_var_name;
+    \end{lstlisting}
+  \item Examples
+    \begin{lstlisting}
+      int *i_ptr; /* pointer to an integer */
+      double *d_ptr; /* pointer to a double */
+      float *f_ptr; /* pointer to a float */
+      char *ch_ptr; /* pointer to a character */
+      int **p_ptr; /* pointer to an integer pointer */
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Pointer Rules}
+  \begin{itemize}
+  \item There are two prefix unary operators to work with pointers.
+  \item[] \lstinline[basicstyle=\footnotesize\ttfamily]|& /* "address of" operator */|
+  \item[] \lstinline[basicstyle=\footnotesize\ttfamily]|* /* "dereferencing" operator */|
+  \item Use ampersand "\textbf{\&}" in front of a variable to access it's address, this can be stored in a pointer variable.
+  \item Use asterisk "\textbf{*}" in front of a pointer you will access the value at the memory address pointed to (\textbf{dereference} the pointer).
+  \item Example
+  \end{itemize}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{lstlisting}
+      int a = 8;
+      int *p;
+      /* point p to a */
+      p = &a;
+      /* dereference pointer p */
+      *p = 10;
+    \end{lstlisting}
+    \column{0.5\textwidth}
+    \begin{tabular}{|c|c|c|}
+      \multicolumn{3}{l}{Part of symbol table} \\
+      \hline
+      var\_name & var\_address & var\_value \\
+      \hline
+      \multicolumn{1}{c|}a & bff5a400 & 8 \\
+      \cline{2-3}
+      \multicolumn{1}{c|}p & bff5a3f6 & bff5a400 \\
+      \cline{2-3}
+    \end{tabular}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Pointer to variables and dereference pointers}
+  \lstinputlisting[basicstyle=\scriptsize\ttfamily]{./Example/pointer_rules.c}
+\end{frame}
+
+\begin{frame}[fragile]{Never dereference an uninitialized pointer!}
+  \begin{itemize}
+  \item In order to dereference the pointer, pointer must have a valid value (address).
+  \item What is the problem for the following code?
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      int *ptr;
+      *ptr = 3; 
+    \end{lstlisting}
+  \item Again, you will have **undefined behavior** at runtime, you are operating on unknown memory space.
+  \item Typically error: "Segmentation fault", possible illegal memory operation
+  \item \textbf{Always initialize your variables before use!}
+  \end{itemize}
+  \begin{center}
+    \begin{tabular}{c|c|c|}
+      \cline{2-3}
+      var\_name & var\_address & var\_value \\
+      \cline{2-3}
+      ptr & 0x22aac0 & 0xXXXX \\
+      \cline{2-3}
+      & 0xXXXX   & 3 \\
+      \cline{2-3}
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{NULL Pointer}
+  \begin{itemize}
+  \item Memory address 0 has special significance, if a pointer contains the
+    null (zero) value, it is assumed to point to nothing, defined as NULL
+    in C.
+  \item Set the pointer to NULL if you do not have exact address to assign
+    to your pointer.
+  \item A pointer that is assigned NULL is called a null pointer.
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      /* set the pointer to NULL 0 */
+      int *ptr = NULL;
+    \end{lstlisting}
+  \item Before using a pointer, ensure that it is not equal to NULL:
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      if (ptr != NULL) {
+        /* make use of pointer1 */
+        /* ... */
+        }
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Pointers and Functions}
+  \begin{itemize}
+  \item In C, arguments are passed by
+    value to functions: changes of the parameters in functions do **not**
+    change the parameters in the calling functions.
+  \item Take a look at the below example, what are the values of a and b after we
+    called swap(a, b);
+    \lstinputlisting[lastline=23]{./Example/swapbyvalue.c}
+  \item The values of a and b do not change after calling swap(a,b)
+  \item \textbf{Pass by value means the called function's parameter will be a
+    copy of the caller's passed argument}. The value of the caller and
+    called functions will be the same, but the identity (the variable) is
+    different - caller and called function each has its own copy of
+    parameters
+    \lstinputlisting[firstline=23]{./Example/swapbyvalue.c}
+  \item The most frequent use of pointers in C is for walking efficiently along
+    arrays.
+    \item \textbf{Remember, array name is the first element address of the array (it
+      is a constant)}
+      \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+        int *p=NULL; /* define an integer pointer p*/
+        /* array name represents the address of the 0th element of the array */
+        int a[5]={1,2,3,4,5};
+        /* for 1d array, below 2 statements are equivalent */
+        p = &a[0]; /* point p to the 1st array element (a[0])'s address */
+        p = a; /* point p to the 1st array element (a[0])'s address */
+        *(p+1); /* access a[1] value */
+        *(p+i); /* access a[i] value */
+        p = a+2; /* p is now pointing at a[2] */
+        p++; /* p is now at a[3] */
+        p--; /* p is now back at a[2] */
+      \end{lstlisting}
+    \item Recall 2D array structure: combination of 1D arrays
+    \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|int a[2][2]={{1,2},{3,4}};|
+    \item The 2D array contains 2 1D arrays: array a[0] and array a[1]
+    \item a[0] is the address of a[0][0], i.e:
+      \begin{itemize}
+      \item a[0] $\Leftrightarrow$ \&a[0][0]
+      \item a[1] $\Leftrightarrow$ \&a[1][0]
+      \end{itemize}
+    \item \textbf{Array a} is then actually an \textbf{address array} composed of a[0], a[1],
+      i.e. a $\Leftrightarrow$ \&a[0]
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Walk through array with pointer}
+  \lstinputlisting[basicstyle=\scriptsize\ttfamily]{./Example/arraywalk.c}
+\end{frame}
+
+\begin{frame}[fragile]{Dynamic memory allocation using pointers}
+  \begin{itemize}
+  \item For situations that the size of an array is unknown, we must use
+    pointers to dynamically manage storage space.
+    \item C provides several functions for memory allocation and
+    management.
+    \item Include <stdlib.h> header file to use these functions.
+    \item Function prototype:
+      \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+          /* This function allocates a block of num bytes of memory and return
+          a pointer to the beginning of the block. */
+          void *malloc(int num);
+          /* This function release a block of memory block specified by
+          address. */
+          void free(void *address);
+      \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example of 1D dynamic array}
+  \lstinputlisting{Example/dynamic_1d_array.c}
+\end{frame}
+
 \section{Input/Output}
 
 \end{document}
