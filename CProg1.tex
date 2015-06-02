@@ -957,6 +957,7 @@ while (condition) {
   \begin{enumerate}
     \item Print list of prime numbers less than 100
     \item Calculate circumference and area of a circle for given radius
+    \item Calculation the Fibonacci sequence of numbers
     \item Calculate factorial of a number
     \item Calculate the Greatest Common Divisor and Least Common Multiple between two integers
   \end{enumerate}
@@ -990,6 +991,32 @@ while (condition) {
       \State $a = \pi{}r^2$
       \State $c = 2\pi{}r$
       \EndProgram{areacircum}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}{Fibonacci Numbers}
+  \begin{itemize}
+  \item In mathematical terms, the sequence $F_n$ of Fibonacci numbers is defined by the recurrence relation
+    \begin{equation*}
+      F_n = F_{n-1} + F_{n-2},
+    \end{equation*}
+    with seed values
+    \begin{equation*}
+      F_0 = 0 ;  F_1 = 1.
+    \end{equation*}
+  \item Calculate the first $n$ Fibonacci Numbers.
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code to calculate sequence of Fibinacci Numbers}
+    \begin{algorithmic}
+      \Program{Fibonacci}{}
+      \State $n \gets$ a number $> 5$
+      \State $f0 \gets 0$, $f1 \gets 1$
+      \Do {$i \gets 2 \cdots n $}
+      \State {$fn \gets f0 + f1$}, {$f0 \gets f1$}, {$fn \gets f1$}
+      \EndDo
+      \EndProgram{Fibonacci}
     \end{algorithmic}
   \end{algorithm}
 \end{frame}
