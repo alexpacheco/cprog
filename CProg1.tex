@@ -5,6 +5,7 @@
 
 \newcolumntype{a}{>{\columncolor{lulime}}c}
 \newcolumntype{b}{>{\columncolor{lulime!60}}c}
+\newcolumntype{f}{>{\columncolor{lulime!60}}l}
 
 
 \hypersetup{
@@ -114,7 +115,7 @@ A C Program consists of the following parts
   \begin{columns}
     \column{0.5\textwidth}
     A Simple Hello World Code
-    \lstinputlisting[language=C]{./Example/hello.c}
+    \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/hello.c}
     \column{0.5\textwidth}
     Compile and execute the code
     \begin{lstlisting}[style=LINUX]
@@ -126,38 +127,38 @@ Hello World!
 \end{frame}
 
 \begin{frame}[fragile]{My First C Code}
-  \lstinputlisting[language=C,numbers=left]{./Example/hello.c}
+  \lstinputlisting[language=C,numbers=left,basicstyle=\scriptsize\ttfamily]{./Example/hello.c}
   \begin{itemize}
-    \item \lstinline[language=C]|#include <stdio.h>| is a preprocessor command.
+    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|#include <stdio.h>| is a preprocessor command.
     \item[] It tells a C compiler to include stdio.h file before going to actual compilation.
-    \item \lstinline[language=C]|int main()| is the main function where program execution begins.
-    \item \lstinline[language=C]|/* ... */| is a comment and ignored by the compiler.
-    \item \lstinline[language=C]|printf(...)| is function that prints \lstinline[language=C]|Hello World!| to the screen.
-    \item \lstinline[language=C]|return 0;| terminates main() function and returns the value 0.
+    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|int main()| is the main function where program execution begins.
+    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|/* ... */| is a comment and ignored by the compiler.
+    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|printf(...)| is function that prints \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|Hello World!| to the screen.
+    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|return 0;| terminates main() function and returns the value 0.
   \end{itemize}
 \end{frame}
 
 \section{Basic Syntax}
 \begin{frame}[fragile,allowframebreaks]{Basic C Syntax}
   \begin{itemize}
-    \item C is a case sensitive programming language i.e. program is not the same as Program or PROGRAM.
-    \item Each individual statement must end with a semicolon. 
-    \item Whitespace i.e. tabs or spaces is insignificant except whitespace within a character string.
-    \item All C statments are free format i.e. no specified layout or column assignment as in FORTRAN77.
-      \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+  \item C is a case sensitive programming language i.e. program is not the same as Program or PROGRAM.
+  \item Each individual statement must end with a semicolon. 
+  \item Whitespace i.e. tabs or spaces is insignificant except whitespace within a character string.
+  \item All C statments are free format i.e. no specified layout or column assignment as in FORTRAN77.
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
 #include <stdio.h>
 int main () {  /* My First C Code */  printf("Hello World!\n");  return 0;}
-      \end{lstlisting}
-    \item[] will produce the exact same result as the code on the previous slide.
-    \item In C everything within \lstinline|/* and */| is a comment. Comments can span multiple lines.
-      \begin{lstlisting}
+    \end{lstlisting}
+  \item[] will produce the exact same result as the code on the previous slide.
+  \item In C everything within \lstinline[basicstyle=\scriptsize\ttfamily]|/* and */| is a comment. Comments can span multiple lines.
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
 /* this is single line comment */
 /* This
 is a 
 multiline comment */
-      \end{lstlisting}
-%      \item Always use proper comments in your code. Your code will most likely be handed to someone long after you are gone.
-%      \item Comments are completely ignored by compiler (test/debug code)
+    \end{lstlisting}
+  \item Always use proper comments in your code. Your code will most likely be handed to someone long after you are gone.
+  \item Comments are completely ignored by compiler (test/debug code)
   \end{itemize}
 \end{frame}
 
@@ -253,7 +254,7 @@ multiline comment */
   \end{center}
   \begin{itemize}
     \item To get the exact size of a type or a variable on a particular platform, you can use the sizeof operator. 
-    \item The expressions \lstinline|sizeof(type)| yields the storage size of the object or type in bytes. 
+    \item The expressions \lstinline[basicstyle=\scriptsize\ttfamily]|sizeof(type)| yields the storage size of the object or type in bytes. 
   \end{itemize}
 \end{frame}
 
@@ -297,7 +298,7 @@ multiline comment */
         \item Most likely your code will be used by someone else, so variable names should be meaningful and short as possible.
       \end{itemize}
     \end{enumerate}
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 int num;
 float circle_area;
 double _volume;
@@ -310,13 +311,13 @@ double _volume;
   \begin{itemize}
     \item A variable definition means to tell the compiler where and how much to create the storage for the variable. 
     \item A variable definition specifies a data type and contains a list of one or more variables of that type as follows:
-    \item[] \lstinline{type variable_list;}
-    \item \lstinline{type} must be a valid C data type or any user-defined object, etc., and 
-    \item[] \lstinline{variable_list} may consist of one or more identifier names separated by commas.
+    \item[] \lstinline[basicstyle=\scriptsize\ttfamily]{type variable_list;}
+    \item \lstinline[basicstyle=\scriptsize\ttfamily]{type} must be a valid C data type or any user-defined object, etc., and 
+    \item[] \lstinline[basicstyle=\scriptsize\ttfamily]{variable_list} may consist of one or more identifier names separated by commas.
     \item Variables can be initialized (assigned an initial value) in their declaration.
-    \item[] \lstinline{type variable_name = value;}
+    \item[] \lstinline[basicstyle=\scriptsize\ttfamily]{type variable_name = value;}
   \end{itemize}
-  \begin{lstlisting}
+  \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 int    i, j, k;
 char   c, ch;
 float  f, salary;
@@ -380,11 +381,11 @@ char x = 'x';               // the variable x has the value 'x'.
   \begin{itemize}
     \item Constants can be defined in two ways
     \begin{enumerate}
-      \item Using the \lstinline{#define} preprocessor (defining a macro)
-      \item Using the \lstinline{const} keyword (new standard borrowed from C++)
+      \item Using the \lstinline[language=C,basicstyle=\scriptsize\ttfamily]{#define} preprocessor (defining a macro)
+      \item Using the \lstinline[language=C,basicstyle=\scriptsize\ttfamily]{const} keyword (new standard borrowed from C++)
     \end{enumerate}
   \end{itemize}
-  \lstinputlisting[language=C]{./Example/const.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/const.c}
 \end{frame}
 
 \begin{frame}{Input and Output}
@@ -420,17 +421,17 @@ char x = 'x';               // the variable x has the value 'x'.
 \begin{frame}[fragile]{Unformatted I/O}
   \begin{block}{The getchar() \& putchar() functions}
     \begin{itemize}
-      \item The \lstinline|int getchar(void)| function reads the next available character from the screen and returns it as an integer. 
+      \item The \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|int getchar(void)| function reads the next available character from the screen and returns it as an integer. 
       \item[] This function reads only single character at a time.
-      \item The \lstinline|int putchar(int c)| function puts the passed character on the screen and returns the same character. 
+      \item The \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|int putchar(int c)| function puts the passed character on the screen and returns the same character. 
       \item[] This function puts only single character at a time. 
     \end{itemize}
   \end{block}
 
   \begin{block}{The gets() \& puts() functions}
     \begin{itemize}
-      \item The \lstinline|char *gets(char *s)| function reads a line from stdin into the buffer pointed to by s until either a terminating newline or EOF.
-      \item The \lstinline|int puts(const char *s)| function writes the string s and a trailing newline to stdout.
+      \item The \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|char *gets(char *s)| function reads a line from stdin into the buffer pointed to by s until either a terminating newline or EOF.
+      \item The \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|int puts(const char *s)| function writes the string s and a trailing newline to stdout.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -438,26 +439,26 @@ char x = 'x';               // the variable x has the value 'x'.
 \begin{frame}[fragile]
   \begin{columns}
     \column{0.5\textwidth}
-    \lstinputlisting[language=C]{./Example/readiounfmt1.c}
+    \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/readiounfmt1.c}
     \column{0.5\textwidth}
-    \lstinputlisting[language=C]{./Example/readiounfmt2.c}
+    \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/readiounfmt2.c}
   \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Formatted I/O}
   \begin{itemize}
-    \item The \lstinline|int scanf(const char *format, ...)| function reads input from the standard input stream stdin and scans that input according to format provided.
-    \item The \lstinline|int printf(const char *format, ...)| function writes output to the standard output stream stdout and produces output according to a format provided (optional).
-      \lstinputlisting[language=C]{./Example/helloworld.c}
+    \item The \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|int scanf(const char *format, ...)| function reads input from the standard input stream stdin and scans that input according to format provided.
+    \item The \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|int printf(const char *format, ...)| function writes output to the standard output stream stdout and produces output according to a format provided (optional).
+      \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/helloworld.c}
     \item In this program, the user is asked a input and value is stored in variable \lstinline|name|.
-    \item Note the '\lstinline|&|' sign before \lstinline|name|.
-    \item \lstinline|&name| denotes the address of \lstinline|name| and value is stored in that address.
+    \item Note the '\lstinline[language=C,basicstyle=\scriptsize\ttfamily]|&|' sign before \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|name|.
+    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|&name| denotes the address of \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|name| and value is stored in that address.
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Common Format Specifier}
   \begin{itemize}
-    \item The format specifier: \lstinline|%[flags][width][.precision][length]specifier| 
+    \item The format specifier: \lstinline[language=C,basicstyle=\footnotesize\ttfamily]|%[flags][width][.precision][length]specifier| 
   \end{itemize}
   \begin{center}
     \begin{tabular}{cl}
@@ -498,7 +499,7 @@ char x = 'x';               // the variable x has the value 'x'.
 \end{frame}
 
 \begin{frame}[fragile]{}
-  \lstinputlisting[language=C]{./Example/print.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/print.c}
   \begin{lstlisting}[style=LINUX]
 alexanders-mbp:Example apacheco$ gcc -o print print.c
 alexanders-mbp:Example apacheco$ ./print
@@ -525,7 +526,7 @@ hello world
           /  & division \\
           \% & remainder after division( modulo division) \\
           ++ & increase integer value by one \\
-          -- & decrease integer value by one \\
+          {-}{-} & decrease integer value by one \\
 %          \hline
         \end{tabular}
       \end{center}
@@ -616,14 +617,34 @@ a(=++i) + b(=j++): 4
   \end{center}
   \begin{itemize}
   \item Conditional Operator: Conditional operators are used in decision making in C programming, i.e, executes different statements according to test condition whether it is either true or false.
-  \item[] \lstinline|conditional_expression?expression1:expression2|
+  \item[] \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|conditional_expression?expression1:expression2|
   \item If the test condition is true, expression1 is returned and if false expression2 is returned.
-  \item[] \lstinline|d=(c>0)?10:-10;|
+  \item[] \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|d=(c>0)?10:-10;|
   \item[] If c is greater than 0, value of d will be 10 but, if c is less than 0, value of d will be -10.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Other Operators}
+\begin{frame}[fragile]{Other Operators}
+  \begin{itemize}
+  \item Bitwise Operators: works on bits and perform bit-by-bit operation
+    \begin{tabular}{aabbb}
+      \rowcolor{lublue}\multicolumn{5}{c}{Truth Table} \\
+      \rowcolor{lublue}p & q & p \& q & p | q & p \Verb|^| q \\
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 1 & 1 \\
+      1 & 1 & 1 & 1 & 0 \\
+      1 & 0 & 0 & 1 & 1 \\ 
+    \end{tabular}
+  \item Misc Operators
+  \item[]
+    \begin{tabular}{abb}
+      \rowcolor{lublue}Operator & Description \\
+      sizeof() & Returns the size of an variable. \\
+      \& & Returns the address of an variable. \\
+      * & Pointer to a variable. \\
+      ? : & Conditional Expression \\
+    \end{tabular}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Operator Precedance}
@@ -683,14 +704,12 @@ a(=++i) + b(=j++): 4
 \begin{frame}[fragile]{if statement}
   \begin{itemize}
     \item An if statement consists of a boolean expression followed by one or more statements.
-      \begin{block}{}
-        \begin{lstlisting}
-if(boolean_expression)
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
+if(expression)
 {
    /* statement(s) will execute if the boolean expression is true */
 }
-        \end{lstlisting}
-      \end{block}
+      \end{lstlisting}
     \item If the boolean expression evaluates to true, then the block of code inside the if statement will be executed. 
     \item If boolean expression evaluates to false, then the first set of code after the end of the if statement(after the closing curly brace) will be executed.
   \end{itemize}
@@ -699,9 +718,8 @@ if(boolean_expression)
 \begin{frame}[fragile]{if $\cdots$ else statement}
   \begin{itemize}
     \item An if statement can be followed by an optional else statement, which executes when the boolean expression is false.
-      \begin{block}{}
-        \begin{lstlisting}
-if(boolean_expression)
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
+if(expression)
 {
    /* statement(s) will execute if the boolean expression is true */
 }
@@ -709,8 +727,7 @@ else
 {
   /* statement(s) will execute if the boolean expression is false */
 }
-        \end{lstlisting}
-      \end{block}
+      \end{lstlisting}
     \item If the boolean expression evaluates to true, then the if block of code will be executed, otherwise else block of code will be executed.
   \end{itemize}
 \end{frame}
@@ -725,17 +742,16 @@ else
       \item An if can have zero to many else if's and they must come before the else.
       \item Once an else if succeeds, none of the remaining else if's or else's will be tested.
     \end{itemize}
-      \begin{block}{}
-        \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
-if(boolean_expression 1)
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
+if(expression 1)
 {
    /* Executes when the boolean expression 1 is true */
 }
-else if( boolean_expression 2)
+else if( expression 2)
 {
    /* Executes when the boolean expression 2 is true */
 }
-else if( boolean_expression 3)
+else if( expression 3)
 {
    /* Executes when the boolean expression 3 is true */
 }
@@ -743,43 +759,39 @@ else
 {
    /* executes when the none of the above condition is true */
 }
-        \end{lstlisting}
-      \end{block}
+    \end{lstlisting}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{}
-  \lstinputlisting[language=C]{./Example/ifelseif.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/ifelseif.c}
 \end{frame}
 
 \begin{frame}[fragile]{Nested if$\cdots$else statement}
   \begin{itemize}
     \item You can use one if or else if statement inside another if or else if statement(s) i.e. nested if$\cdots$else statement/s
-      \begin{block}{}
-        \begin{lstlisting}
-if( boolean_expression 1)
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
+if( expression 1)
 {
    /* Executes when the boolean expression 1 is true */
-   if(boolean_expression 2)
+   if( expression 2)
    {
       /* Executes when the boolean expression 2 is true */
    }
 }
-        \end{lstlisting}
-      \end{block}
+      \end{lstlisting}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{}
-  \lstinputlisting[language=C]{./Example/nestedif.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/nestedif.c}
 \end{frame}
 
-\begin{frame}[fragile]{switch statement}
+\begin{frame}[fragile,allowframebreaks]{switch statement}
   \begin{itemize}
     \item A switch statement allows a variable to be tested for equality against a list of values. 
     \item Each value is called a case, and the variable being switched on is checked for each switch case.
-      \begin{block}{}
-        \begin{lstlisting}
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 switch(expression){
     case constant-expression  :
        statement(s);
@@ -792,13 +804,7 @@ switch(expression){
     default : /* Optional */
        statement(s);
 }
-        \end{lstlisting}
-      \end{block}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile,allowframebreaks]
-  \begin{itemize}
+      \end{lstlisting}
     \item The expression used in a switch statement must have an integral type 
     \item[](or enumerated type, or be of a class type in which the class has a single conversion function to an integral or enumerated type).
     \item You can have any number of case statements within a switch. Each case is followed by the value to be compared to and a colon.
@@ -809,16 +815,15 @@ switch(expression){
     \item A switch statement can have an optional default case, which must appear at the end of the switch. 
     \item The default case can be used for performing a task when none of the cases is true. No break is needed in the default case.
   \end{itemize}
-  \lstinputlisting[language=C]{./Example/switch.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/switch.c}
 \end{frame}
 
 \begin{frame}[fragile]{Nested Conditional Statements}
   \begin{itemize}
     \item Conditional statements can be nested as they do not overlap:
-  \end{itemize}
-  \begin{lstlisting}
-if( boolean_expression 1) {
-  if(boolean_expression 2) {
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
+if( expression 1) {
+  if(expression 2) {
     /* Executes when the boolean expression 2 is true */
     /* nested switch statement */
     switch(expression){
@@ -834,7 +839,8 @@ if( boolean_expression 1) {
     }
   }
  }
-  \end{lstlisting}
+      \end{lstlisting}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{for loop}
@@ -846,44 +852,38 @@ if( boolean_expression 1) {
         \item the increment statement executes after the loop body.
         \item The loop continues until the condition becomes false
       \end{itemize}
-  \end{itemize}
-  \begin{block}{}
-    \begin{lstlisting}
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 for ( init; condition; increment )
 {
    statement(s);
 }
-    \end{lstlisting}
-  \end{block}
+      \end{lstlisting}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{while and do$\cdots$while loops}
   \begin{itemize}
     \item while loops are similar to for loops
     \item A while loop continues executing the code block as long as the condition in the while holds.
-      \begin{block}{}
-        \begin{lstlisting}
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 while(condition)
 {
    statement(s);
 }
-        \end{lstlisting}
-      \end{block}
+      \end{lstlisting}
     \item do$\cdots$while loop is guaranteed to execute at least one time.
-      \begin{block}{}
-        \begin{lstlisting}
+      \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 do
 {
    statement(s);
 
 }while( condition );
-        \end{lstlisting}
-      \end{block}
+      \end{lstlisting}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Simple loops using for, while, do while}
-  \lstinputlisting[language=C]{./Example/loops.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/loops.c}
 \end{frame}
 
 \begin{frame}[fragile]{Nested loops in C}
@@ -892,8 +892,7 @@ do
   \end{itemize}
   \begin{columns}
     \column{0.45\textwidth}
-    \begin{block}{}
-      \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 /* nested for loops*/
 for (init; condition; increment) {
   for (init; condition; increment) {
@@ -908,11 +907,9 @@ while (condition) {
   }
   statement(s);
  }
-      \end{lstlisting}
-    \end{block}
+    \end{lstlisting}
     \column{0.45\textwidth}
-    \begin{block}{}
-      \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 /* nested do while loops*/
 do {
   statement(s);
@@ -930,15 +927,12 @@ while (condition) {
   }
   statement(s);
  }
-      \end{lstlisting}
-    \end{block}
+    \end{lstlisting}
   \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-  \begin{block}{}
-    \lstinputlisting[basicstyle=\scriptsize\ttfamily]{./Example/nestedfor.c}
-  \end{block}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/nestedfor.c}
 \end{frame}
 
 \begin{frame}[fragile]{Loop Control Statement}
@@ -952,20 +946,100 @@ while (condition) {
   \end{itemize}
   \begin{columns}
     \column{0.45\textwidth}
-    \lstinputlisting{./Example/break.c}
+    \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/break.c}
     \column{0.45\textwidth}
-    \lstinputlisting{./Example/continue.c}
+    \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\ttfamily]{./Example/continue.c}
   \end{columns}
 \end{frame}
 
+\section{Exercises}
 \begin{frame}{Exercise}
   \begin{enumerate}
     \item Print list of prime numbers less than 100
     \item Calculate circumference and area of a circle for given radius
-    \item Obtain roots of a quadratic equations
     \item Calculate factorial of a number
+    \item Calculate the Greatest Common Divisor and Least Common Multiple between two integers
   \end{enumerate}
 \end{frame}
+
+\begin{frame}{List of Prime Numbers}
+  \begin{algorithm}[H]
+    \caption{Pseudo code to get list of prime numbers}
+    \begin{algorithmic}
+      \Program{primenumbers}{}
+      \For{$2\le i \le 100$}
+        \For{$2 \le j \le (i/j) $}
+        \State \textbf{if} ($i\%j \ne 0$ ) \texttt{i is prime}
+        \EndFor
+      \EndFor
+      \EndProgram{primenumbers}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}{Calculate Area and Circumference}
+  \begin{itemize}
+  \item Write a code to read a radius from standard input and calculate area and circumference of a circle of that radious
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo code for calculating area and circumference} 
+    \begin{algorithmic}
+      \Program{areacircum}{}
+      \State Define $\pi$
+      \State $r \gets$ some number
+      \State $a = \pi{}r^2$
+      \State $c = 2\pi{}r$
+      \EndProgram{areacircum}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}{Factorial}
+  \begin{itemize}
+  \item Calculate factorial and double factorial of a number
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code for Factorial}
+    \begin{algorithmic}
+      \Program{Factorial}{}
+      \State $n \gets$ a number
+      \Do {$i \gets n, n-1, n-2 \cdots 1$}
+      \State $f = f * i$
+      \EndDo
+      \EndProgram{Factorial}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+  
+\begin{frame}[allowframebreaks]{Calculate GCD \& LCM}
+  \begin{itemize}
+  \item In mathematics, the greatest common divisor (gcd) of two or more integers, when at least one of them is not zero, is the largest positive integer that divides the numbers without a remainder.
+  \item Using Euclid's algorithm
+    \begin{align*}
+      gcd(a,0) &= a \\
+      gcd(a,b) &= gcd(b, a\% b)
+    \end{align*}
+  \item In arithmetic and number theory, the least common multiple of two integers a and b is the smallest positive integer that is divisible by both a and b.
+    \begin{equation*}
+      lcm(a,b) = \frac{\mid{}a\cdot{}b\mid}{gcd(a,b)}
+    \end{equation*}
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code to calculate gcd}
+    \begin{algorithmic}
+      \Program{gcdlcm}{}
+      \State $a,b \gets$ two integers
+      \Do{\textbf{while} $b \ne 0$}
+      \State $t\gets v$, $v\gets u\%v$, $u\gets t$
+      \EndDo
+      \State $gcd \gets |u|$
+      \State $lcm \gets |a\cdot{}b|/gcd$
+      \EndProgram{gcdlcm}
+    \end{algorithmic}
+  \end{algorithm}
+  
+\end{frame}
+
 
 \end{document}
 
