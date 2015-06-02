@@ -1,0 +1,7 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=611790D7
+eax=0000002F ebx=0022CC5C ecx=00000002 edx=00000006 esi=0022B89C edi=00000002
+ebp=611B1F30 esp=0022B6D0 program=C:\cygwin\home\pacheco\bitbucket\cprog\Example\Solution\gcdlcm.exe, pid 14744, thread main
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+End of stack trace
