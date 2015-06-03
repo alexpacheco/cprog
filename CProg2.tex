@@ -5,6 +5,9 @@
 
 \newcolumntype{a}{>{\columncolor{lulime}}c}
 \newcolumntype{b}{>{\columncolor{lulime!60}}c}
+\newcolumntype{d}{>{\columncolor{lulime!40}}c}
+\newcolumntype{e}{>{\columncolor{lulime}}l}
+\newcolumntype{f}{>{\columncolor{lulime!60}}l}
 
 \hypersetup{
   pdftitle={C Programming}
@@ -60,7 +63,7 @@
   \item In C, arguments are \textbf{passed by value} to functions
   \item How to return value? - \textbf{Pointers}
   \item Functions are defined using the following syntax:
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       return_type function_name( parameter list )
       {
         body of the function
@@ -78,11 +81,11 @@
   \item \textbf{Parameter:} The parameter list refers to the type, order, and number of the parameters of a function. A function may contain no parameters.
   \item \textbf{Function Body:} The function body contains a collection of statements that define the function behavior.
   \end{itemize}
-  \lstinputlisting[language=C,firstline=20,lastline=32]{./Example/findmax.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily,firstline=20,lastline=32]{./Example/findmax.c}
 \end{frame}
 
 \begin{frame}{Example of using a Function}
-  \lstinputlisting[language=C]{./Example/findmax.c}
+  \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/findmax.c}
 \end{frame}
 
 \begin{frame}[fragile,allowframebreaks]{Scope Rules: Local \& Global Variables}
@@ -97,7 +100,7 @@
   \item A program can have same name for local and global variables but value of local variable inside a function will take preference.
 %  \item \textbf{\color{lublue}Formal Parameters:} Function parameters, formal parameters, are treated as local variables with-in that function and they will take preference over the global variables.
   \end{itemize}
-  \lstinputlisting[language=C]{./Example/scope.c}
+  \lstinputlisting[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]{./Example/scope.c}
   \begin{lstlisting}
     value of a in main() = 10
     value of a in sum() = 10
@@ -127,8 +130,8 @@
 \begin{frame}[fragile]{Arrays}
   \begin{itemize}
   \item Arrays are special variables which can hold more than one value using the same name with an index.
-  \item Declaring Arrays: \lstinline|type arrayName [ arraySize ];|
-    \begin{lstlisting}[language=C]
+  \item Declaring Arrays: \lstinline[basicstyle=\scriptsize\ttfamily]|type arrayName [ arraySize ];|
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       /* simply define the arrays */
       double balance[10];
       float atom[1000];
@@ -145,14 +148,14 @@
     \end{tabular}
   \item[] index[2] (3rd element of the array) has a value 14
   \item Initialize arrays with values
-    \begin{lstlisting}[language=C]
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       /* initialize the array with values*/
       double atmass[4] = {12.0, 1.0, 1.0, 16.0};
       double atmass[] = {12.0, 1.0, 1.0, 16.0};
       atmass[0] = 12.0
     \end{lstlisting}
   \item Access array values via index
-    \begin{lstlisting}[language=C]
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       /* access the array values*/
       int current_index = index[i];
       double current_value=value[current_cell_index];
@@ -161,7 +164,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Array Example}
-  \lstinputlisting[language=C]{./Example/array.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/array.c}
 \end{frame}
 
 \begin{frame}[fragile]{Accessing C arrays}
@@ -171,7 +174,7 @@
   \item Be careful when accessing your arrays
   \item Compiler will not give you error, you will have *undefined* runtime behavior:
   \end{itemize}
-  \begin{lstlisting}
+  \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
 #include <stdio.h>
 
 int main() {
@@ -193,12 +196,12 @@ int main() {
   \item General form of multidimensional array
   \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|type name[size1][size2]...[sizeN];|
   \item Declaring 2D and 3D arrays:
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       float array2d[4][5];
       double array3d[2][3][4];
     \end{lstlisting}
   \item Initializing multidimensional arrays
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       int a[3][4] = {{/* 2D array is composed of 1D arrays*/
         {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
         {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
@@ -229,14 +232,14 @@ int main() {
 \end{frame}
 
 \begin{frame}[fragile]{Example: Arrays}
-  \lstinputlisting{./Example/minmaxsum.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/minmaxsum.c}
 \end{frame}
 
 \begin{frame}[fragile,allowframebreaks]{Strings in C}
   \begin{itemize}
   \item Strings in C are a special type of array: array of characters terminated by a null character '\textbackslash{}0'.
 
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       /* define string */
       char str[7]={'H', 'E', 'L', 'L', 'O', '!', '\0'};
       char str1="HELLO!";
@@ -253,7 +256,7 @@ int main() {
     \end{tabular}
 
   \item C uses built-in functions to manipulate strings:
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       /* C sample string functions */
       strcpy(s1, s2); /* Copies string s2 into string s1.*/
       strcat(s1, s2); /* Concatenates string s2 onto the end of string s1. */
@@ -263,8 +266,9 @@ int main() {
     \end{lstlisting}
   \end{itemize}
 
-  \lstinputlisting[language=C]{./Example/strings.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/strings.c}
 \end{frame}
+
 
 \section{Pointers}
 \begin{frame}{Pointers}
@@ -289,14 +293,14 @@ int main() {
   \item Since it is a variable, it must be declared before use.
   \item Pointer "points" to a specific part of the memory.
   \item How to define pointers?
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       /* type: pointer's base type
       var-name: name of the pointer variable.
       asterisk *:designate a variable as a pointer */
       type *pointer_var_name;
     \end{lstlisting}
   \item Examples
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       int *i_ptr; /* pointer to an integer */
       double *d_ptr; /* pointer to a double */
       float *f_ptr; /* pointer to a float */
@@ -317,7 +321,7 @@ int main() {
   \end{itemize}
   \begin{columns}[t]
     \column{0.5\textwidth}
-    \begin{lstlisting}
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       int a = 8;
       int *p;
       /* point p to a */
@@ -340,14 +344,14 @@ int main() {
 \end{frame}
 
 \begin{frame}[fragile]{Pointer to variables and dereference pointers}
-  \lstinputlisting[basicstyle=\scriptsize\ttfamily]{./Example/pointer_rules.c}
+  \lstinputlisting[language=C,basicstyle=\scriptsize\ttfamily]{./Example/pointer_rules.c}
 \end{frame}
 
 \begin{frame}[fragile]{Never dereference an uninitialized pointer!}
   \begin{itemize}
   \item In order to dereference the pointer, pointer must have a valid value (address).
   \item What is the problem for the following code?
-    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+    \begin{lstlisting}[language=C,basicstyle=\scriptsize\ttfamily]
       int *ptr;
       *ptr = 3; 
     \end{lstlisting}
@@ -463,7 +467,377 @@ int main() {
   \lstinputlisting{Example/dynamic_1d_array.c}
 \end{frame}
 
-\section{Input/Output}
+\section{File Input/Output}
+\begin{frame}[fragile]{Opening \& Closing Files}
+  \begin{itemize}
+  \item Opening Files: use the \lstinline[basicstyle=\scriptsize\ttfamily]|fopen( )| function to create a new file or to open an existing file, this call will initialize an object of the type FILE
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      FILE *fopen( const char * filename, const char * mode );
+    \end{lstlisting}
+    \begin{itemize}
+    \item  \lstinline[basicstyle=\scriptsize\ttfamily]|filename| is string literal, which you will use to name your file and access  \lstinline[basicstyle=\scriptsize\ttfamily]|mode| can have one of the following values:
+    \end{itemize}
+  \end{itemize}
+  {\scriptsize
+  \begin{tabular}{af}
+    \rowcolor{lublue}Mode & Description \\
+    r & Read Only, file pointer is at beginning of file \\
+    w & Write Only, file pointer is at beginning of file \\
+    a & Append, if file exists, file pointer is at end of file \\
+    r+ & Read \& Write \\
+    w+ & first truncate the file to zero length if it exists otherwise create the file if it does not exist. \\
+    a+ & creates file if it does not exist. The reading will start from the beginning but writing can only be appended. \\
+  \end{tabular}
+  }
+  \begin{itemize}
+  \item Closing Files: use the \lstinline[basicstyle=\scriptsize\ttfamily]|fclose( )| function.
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      int fclose( FILE *fp );
+    \end{lstlisting}
+    \begin{itemize}
+    \item The \lstinline[basicstyle=\scriptsize\ttfamily]|fclose( )| function returns zero on success, or EOF if there is an error in closing the file.
+    \item This function actually, flushes any data still pending in the buffer to the file, closes the file, and releases any memory used for the file.
+    \item The EOF is a constant defined in the header file stdio.h.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Writing Files}
+  \begin{itemize}
+  \item  simplest function to write individual characters to a stream:
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      int fputc( int c, FILE *fp );
+    \end{lstlisting}
+  \item function \lstinline[basicstyle=\scriptsize\ttfamily]|fputc()| writes the character value of the argument 'c' to the output stream referenced by \lstinline[basicstyle=\scriptsize\ttfamily]|fp|.
+  \item returns the written character written on success otherwise EOF if there is an error.
+  \item to write a null-terminated string to a stream:
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      int fputs( const char *s, FILE *fp );
+    \end{lstlisting}
+  \item function \lstinline[basicstyle=\scriptsize\ttfamily]|fputs()| writes the string 's' to the output stream referenced by \lstinline[basicstyle=\scriptsize\ttfamily]|fp|.
+  \item returns a non-negative value on success, otherwise EOF is returned in case of any error.
+  \item You can use \lstinline[basicstyle=\scriptsize\ttfamily]|int fprintf(FILE *fp,const char *format, ...)| function as well to write a string into a file.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Reading Files}
+  \begin{itemize}
+  \item simplest function to read a single character from a file:
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      int fgetc( FILE * fp );
+    \end{lstlisting}
+  \item \lstinline[basicstyle=\scriptsize\ttfamily]fgetc()| function reads a character from the input file referenced by \lstinline[basicstyle=\scriptsize\ttfamily]|fp|.
+  \item return value is the character read, or in case of any error it returns EOF.
+  \item functions to read a string from a stream:
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      char *fgets( char *buf, int n, FILE *fp );
+    \end{lstlisting}
+  \item function \lstinline[basicstyle=\scriptsize\ttfamily]|fgets()| reads up to $n - 1$ characters from the input stream referenced by \lstinline[basicstyle=\scriptsize\ttfamily]|fp|.
+  \item It copies the read string into the buffer buf, appending a null character to terminate the string.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Writing \& Reading a File}
+  \begin{columns}
+    \column{0.45\textwidth}
+    \begin{lstlisting}[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]
+    #include <stdio.h>
+
+    main()
+    {
+      FILE *fp;
+
+      fp = fopen("/tmp/test.txt", "w+");
+      fprintf(fp, "This is testing for fprintf...\n");
+      fputs("This is testing for fputs...\n", fp);
+      fclose(fp);
+    }
+    \end{lstlisting}
+    \column{0.45\textwidth}
+    \begin{lstlisting}[language=C,basicstyle=\fontsize{5}{6}\selectfont\ttfamily]
+    #include <stdio.h>
+
+    main()
+    {
+      FILE *fp;
+      char buff[255];
+
+      fp = fopen("/tmp/test.txt", "r");
+      fscanf(fp, "%s", buff);
+      printf("1 : %s\n", buff );
+
+      fgets(buff, 255, (FILE*)fp);
+      printf("2: %s\n", buff );
+
+      fgets(buff, 255, (FILE*)fp);
+      printf("3: %s\n", buff );
+      fclose(fp);
+
+      }
+    \end{lstlisting}
+  \end{columns}
+\end{frame}
+
+\section{Preprocessor}
+\begin{frame}[fragile,allowframebreaks]{C Preprocessor}
+  \begin{itemize}
+  \item The C Preprocessor is not part of the compiler, but is a separate step in the compilation process.
+  \item In simplistic terms, a C Preprocessor is just a text substitution tool and they instruct compiler to do required pre-processing before actual compilation.
+  \item All preprocessor commands begin with a pound symbol (\#).
+  \item It must be the first nonblank character, and for readability, a preprocessor directive should begin in first column.    
+    \begin{center}
+      {\scriptsize
+        \begin{tabular}{af}
+          \rowcolor{lublue}Directive & Description \\
+          \#define & Substitutes a preprocessor macro \\
+          \#include & Inserts a particular header from another file \\
+          \#undef & Undefines a preprocessor macro \\
+          \#ifdef & Returns true if this macro is defined \\
+          \#ifndef & Returns true if this macro is not defined \\
+          \#if & Tests if a compile time condition is true \\
+          \#else & The alternative for \#if \\
+          \#elif & \#else an \#if in one statement \\
+          \#endif & Ends preprocessor conditional \\
+          \#error & Prints error message on stderr \\
+          \#pragma & Issues special commands to the compiler, using a standardized method \\
+        \end{tabular}
+      }
+    \end{center}
+    \framebreak
+  \item replace instances of MAX\_ARRAY\_LENGTH with 20
+  \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|#define MAX_ARRAY_LENGTH 20|
+  \item get stdio.h from System Libraries and add the text to the current source file.
+  \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|#include <stdio.h>|
+  \item get myheader.h from the local directory and add the content to the current source file.
+  \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|#include "myheader.h"|
+  \item undefine existing FILE\_SIZE and define it as 42.
+  \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|#undef  FILE_SIZE|
+  \item[] \lstinline[basicstyle=\scriptsize\ttfamily]|#define FILE_SIZE 42|
+  \item define MESSAGE only if MESSAGE isn't already defined.
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]||
+      #ifndef MESSAGE
+      #define MESSAGE "You wish!"
+      #endif
+    \end{lstlisting}
+  \item process the statements enclosed if DEBUG is defined.
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+      #ifdef DEBUG
+      /* Your debugging statements here */
+      #endif
+    \end{lstlisting}
+  \item This is useful if you pass the -DDEBUG flag to gcc compiler at the time of compilation.    
+  \end{itemize}
+\end{frame}
+
+
+%\begin{frame}[fragile]{C Memory Management}
+%  \begin{itemize}
+%  \item The C programming language provides several functions for memory allocation and management.
+%  \item You need to include \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|<stdlib.h>|header file.
+%    \begin{itemize} 
+%    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|void *calloc(int num, int size);| allocates an array of num elements each of which size in bytes will be size. 
+%    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|void free(void *address);| release a block of memory block specified by address. 
+%    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|void *malloc(int num);| allocates an array of num bytes and leave them initialized. 
+%    \item \lstinline[language=C,basicstyle=\scriptsize\ttfamily]|void *realloc(void *address, int newsize);| re-allocates memory extending it upto newsize.
+%    \end{itemize}
+%  \end{itemize}
+%\end{frame}
+
+\section{Exercise}
+
+\begin{frame}{Calculate Area and Circumference}
+  \begin{itemize}
+  \item Write a code to read a radius from standard input and calculate area and circumference of a circle of that radious
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo code for calculating area and circumference} 
+    \begin{algorithmic}
+      \Program{areacircum}{}
+      \State Define $\pi$
+      \State $r \gets$ some number
+      \State $a = \pi{}r^2$
+      \State $c = 2\pi{}r$
+      \EndProgram{areacircum}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}{Roots of Quadratic Equation}
+  \begin{itemize}
+  \item Solve the quadratic equation $ax^2 + bx + c = 0$
+  \end{itemize}
+    \begin{equation*}
+      x = \frac{-b \pm \sqrt(b^2 - 4ac)}{2a}
+    \end{equation*}
+    \begin{algorithm}[H]
+      \caption{Pseudo Code for Solving Quadratic Equation}
+      \begin{algorithmic}
+        \Program{roots}{}
+        \State read a, b, c from standard input
+        \State $d \gets b^2 + 4ac$
+        \State $x \gets (-b + \sqrt{d})/2a$ and $x \gets (-b -\sqrt{d})/2a$
+        \EndProgram{roots}
+      \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+\begin{frame}{Fibonacci Numbers}
+  \begin{itemize}
+  \item In mathematical terms, the sequence $F_n$ of Fibonacci numbers is defined by the recurrence relation
+    \begin{equation*}
+      F_n = F_{n-1} + F_{n-2},
+    \end{equation*}
+    with seed values
+    \begin{equation*}
+      F_0 = 0 ;  F_1 = 1.
+    \end{equation*}
+  \item Calculate the first $n$ Fibonacci Numbers.
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code to calculate sequence of Fibinacci Numbers}
+    \begin{algorithmic}
+      \Program{Fibonacci}{}
+      \State $n \gets$ a number $> 5$
+      \State $f0 \gets 0$, $f1 \gets 1$
+      \Do {$i \gets 2 \cdots n $}
+      \State {$fn \gets f0 + f1$}, {$f0 \gets f1$}, {$fn \gets f1$}
+      \EndDo
+      \EndProgram{Fibonacci}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}{Factorial}
+  \begin{itemize}
+  \item Calculate factorial and double factorial of a number
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code for Factorial}
+    \begin{algorithmic}
+      \Program{Factorial}{}
+      \State $n \gets$ a number
+      \Do {$i \gets n, n-1, n-2 \cdots 1$}
+      \State $f = f * i$
+      \EndDo
+      \EndProgram{Factorial}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+  
+\begin{frame}[allowframebreaks]{Calculate GCD \& LCM}
+  \begin{itemize}
+  \item In mathematics, the greatest common divisor (gcd) of two or more integers, when at least one of them is not zero, is the largest positive integer that divides the numbers without a remainder.
+  \item Using Euclid's algorithm
+    \begin{align*}
+      gcd(a,0) &= a \\
+      gcd(a,b) &= gcd(b, a\% b)
+    \end{align*}
+  \item In arithmetic and number theory, the least common multiple of two integers a and b is the smallest positive integer that is divisible by both a and b.
+    \begin{equation*}
+      lcm(a,b) = \frac{\mid{}a\cdot{}b\mid}{gcd(a,b)}
+    \end{equation*}
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code to calculate gcd}
+    \begin{algorithmic}
+      \Program{gcdlcm}{}
+      \State $a,b \gets$ two integers
+      \Do{\textbf{while} $b \ne 0$}
+      \State $t\gets v$, $v\gets u\%v$, $u\gets t$
+      \EndDo
+      \State $gcd \gets |u|$
+      \State $lcm \gets |a\cdot{}b|/gcd$
+      \EndProgram{gcdlcm}
+    \end{algorithmic}
+  \end{algorithm}
+  
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Calculate pi by Numerical Integration}
+  \begin{columns}
+    \column{5cm}
+    \begin{itemize}
+      \item We know that
+      \begin{align*}
+        \int^1_0 \dfrac{4.0}{(1+x^2)}\, dx = \pi
+      \end{align*}
+      \item So numerically, we can approxiate pi as the sum of a number of rectangles
+      \begin{align*}
+        \sum^N_{i=0}\,F(x_i)\Delta x \approx \pi
+      \end{align*}
+      \item[] \fontsize{4}{5}{ Meadows et al, A ``hands-on'' introduction to OpenMP, SC09 }
+    \end{itemize}
+    \column{5cm}
+    \begin{center}
+      \includegraphics[width=4cm]{./pi}
+    \end{center}
+  \end{columns}
+
+  \begin{algorithm}[H]
+    \caption{Pseudo Code for Calculating Pi}
+    \begin{algorithmic}
+        \Function{calculate\_pi}{}
+        \State $step \gets 1/n$
+        \State $sum \gets 0$
+        \Do{$i \gets 0\cdots n$}
+        \State $x \gets (i+0.5)*step; sum \gets sum + 4/(1+x^2)$
+        \EndDo
+        \State $pi \gets sum * step$
+        \EndFunction
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+
+\begin{frame}{SAXPY}
+  \begin{itemize}
+    \item SAXPY is a common operation in computations with vector processors included as part of the BLAS routines
+    \item[] $y\leftarrow \alpha x + y$
+%    \item SAXPY is a combination of scalar multiplication and vector addition
+    \item Write a SAXPY code to multiply a vector with a scalar.
+  \end{itemize}
+  \begin{algorithm}[H]
+    \caption{Pseudo Code for SAXPY}
+    \begin{algorithmic}
+      \Program{saxpy}{}
+      \State $n \gets$ some large number
+      \State $x(1:n) \gets$ some number say, 1
+      \State $y(1:n) \gets$ some other number say, 2
+      \State $a \gets$ some other number ,say, 3
+      \Do{$i \gets 1\cdots n$}
+      \State $y_i \gets y_i + a * x_i$
+      \EndDo
+      \EndProgram{saxpy}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Matrix Multiplication}
+  \begin{itemize}
+    \item Most Computational code involve matrix operations such as matrix multiplication.
+    \item Consider a matrix {\bf C} which is a product of two matrices {\bf A} and {\bf B}:
+    \item[] Element {\it i,j} of {\bf C} is the dot product of the $i^{th}$ row of {\bf A} and $j^{th}$ column of {\bf B}
+    \item Write a MATMUL code to multiple two matrices.
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{./matmul}
+  \end{center}
+
+  \begin{algorithm}[H]
+    \caption{Pseudo Code for MATMUL}
+    \begin{algorithmic}
+      \Program{matmul}{}
+      \State $m,n \gets$ some\,large\,number $\le 1000$
+      \State Define $a_{mn}, b_{nm}, c_{mm}$
+      \State $a_{ij} \gets i+j; b_{ij} \gets i-j; c_{ij} \gets 0$
+      \Do{$i \gets 1\cdots m$}
+      \Do{$j \gets 1\cdots m$}
+      \State $c_{i,j} \gets \sum^{n}_{k=1} a_{i,k}*b_{k,j}$
+      \EndDo
+      \EndDo
+      \EndProgram{matmul}
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
 
 \end{document}
-
